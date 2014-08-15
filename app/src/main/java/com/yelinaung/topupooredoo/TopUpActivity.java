@@ -15,7 +15,12 @@ public class TopUpActivity extends ActionBarActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_top_up);
 
-    final String code = ((EditText) findViewById(R.id.code)).getText().toString();
+    String code1 = ((EditText) findViewById(R.id.code_1)).getText().toString();
+    String code2 = ((EditText) findViewById(R.id.code_2)).getText().toString();
+    String code3 = ((EditText) findViewById(R.id.code_3)).getText().toString();
+    String code4 = ((EditText) findViewById(R.id.code_4)).getText().toString();
+
+    final String code = code1 + code2 + code3 + code4;
 
     findViewById(R.id.top_up_btn).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
