@@ -34,52 +34,55 @@ public class TopUpActivity extends ActionBarActivity {
       @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
       }
 
-      @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-      }
+      @Override public void onTextChanged(final CharSequence s1, int start, int before, int count) {
 
-      @Override public void afterTextChanged(final Editable s1) {
         editText2.addTextChangedListener(new TextWatcher() {
           @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
           }
 
-          @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-          }
-
-          @Override public void afterTextChanged(final Editable s2) {
+          @Override public void onTextChanged(final CharSequence s2, int start, int before,
+              int count) {
             editText3.addTextChangedListener(new TextWatcher() {
               @Override public void beforeTextChanged(CharSequence s, int start, int count,
                   int after) {
               }
 
-              @Override public void onTextChanged(CharSequence s, int start, int before,
+              @Override public void onTextChanged(final CharSequence s3, int start, int before,
                   int count) {
-              }
-
-              @Override public void afterTextChanged(final Editable s3) {
                 editText4.addTextChangedListener(new TextWatcher() {
                   @Override public void beforeTextChanged(CharSequence s, int start, int count,
                       int after) {
+
                   }
 
-                  @Override public void onTextChanged(CharSequence s, int start, int before,
+                  @Override public void onTextChanged(final CharSequence s4, int start, int before,
                       int count) {
+                    int total = s1.length() + s2.length() + s3.length() + s4.length();
+                    Log.i("tag", "total " + total);
+                    if (total == 16) {
+                      topUpBtn.setEnabled(true);
+                    } else {
+                      topUpBtn.setEnabled(false);
+                    }
                   }
 
-                  @Override public void afterTextChanged(final Editable s4) {
-                    if (s1.toString().trim().length() < 4
-                        || s2.toString().trim().length() < 4
-                        || s2.toString().trim().length() < 4
-                        || s4.toString().trim().length() < 4) {
-                      topUpBtn.setEnabled(false);
-                    } else {
-                      topUpBtn.setEnabled(true);
-                    }
+                  @Override public void afterTextChanged(Editable s) {
                   }
                 });
               }
+
+              @Override public void afterTextChanged(Editable s) {
+              }
             });
           }
+
+          @Override public void afterTextChanged(Editable s) {
+
+          }
         });
+      }
+
+      @Override public void afterTextChanged(final Editable s1) {
       }
     });
 
